@@ -29,6 +29,11 @@ syntax match xitCheckboxChecked "\v\[x\]"
 syntax match xitCheckboxOngoing "\v\[\@\]"
 syntax match xitCheckboxObsolete "\v\[\~\]"
 
+" Checkbox description
+syntax match xitCheckboxOpenDescription "\(\[x\] \)\@<=.*$"
+syntax match xitCheckboxCheckedDescription "\(\[x\] \)\@<=.*$"
+syntax match xitCheckboxObsoleteDescription "\(\[\~\] \)\@<=.*$"
+
 " Highlighting
 " =====================
 " For items that make sense to put to a existing
@@ -36,9 +41,14 @@ syntax match xitCheckboxObsolete "\v\[\~\]"
 " For others, this will simply use colors defined
 " in your terminal (like priority will use BrightRed).
 highlight xitTitle cterm=underline ctermfg=15
+
+highlight xitCheckboxOpen ctermfg=6
 highlight xitCheckboxChecked ctermfg=2
 highlight xitCheckboxObsolete ctermfg=8
-highlight xitCheckboxOpen ctermfg=6
 highlight link xitCheckboxOngoing Keyword
+
+highlight link xitCheckboxOpenDescription Normal
+highlight xitCheckboxCheckedDescription ctermfg=8
+highlight xitCheckboxObsoleteDescription ctermfg=8
 
 let b:current_syntax = "xit"
