@@ -21,7 +21,7 @@ if exists("b:current_syntax")
 endif
 
 " Title
-syntax match xitTitle "^[a-zA-Z0-9][a-zA-Z0-9 ]*$"
+syntax match xitTitle "\v^[a-zA-Z0-9]+.*$"
 
 " Checkboxes
 syntax match xitCheckboxOpen "\v\[ \]"
