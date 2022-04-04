@@ -12,18 +12,19 @@ if exists("b:current_syntax")
   finish
 endif
 
+" Title
 syntax match xitTitle "^[a-zA-Z0-9][a-zA-Z0-9 ]*$"
+
+" Checkboxes
 syntax match xitCheckboxOpen "\v\[ \]"
 syntax match xitCheckboxChecked "\v\[x\]"
 syntax match xitCheckboxOngoing "\v\[\@\]"
 syntax match xitCheckboxObsolete "\v\[\~\]"
-syntax match xitTag "\v#[A-Za-z0-9]+"
 
 highlight xitTitle cterm=underline ctermfg=15
 highlight xitCheckboxChecked ctermfg=2
 highlight xitCheckboxObsolete ctermfg=8
 highlight xitCheckboxOpen ctermfg=6
 highlight link xitCheckboxOngoing Keyword
-highlight link xitTag String
 
 let b:current_syntax = "xit"
