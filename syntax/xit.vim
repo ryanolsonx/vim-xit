@@ -45,6 +45,8 @@ syntax match xitNotCheckbox "\v^\[[x|\~|\@| ]\][^ ].*"
 " too many spaces inside of open checkbox
 syntax match xitNotCheckbox "\v^\[\s{2,}\].*"
 
+syntax match xitTag "\v#[a-zA-Z0-9]+"
+
 " -- Highlighting
 " For items that make sense to put to a existing
 " highlight group (i.e. Keyword), it'll use that.
@@ -55,8 +57,10 @@ highlight xitTitle cterm=bold,underline
 
 highlight xitCheckboxOpen ctermfg=6
 highlight xitCheckboxChecked ctermfg=2
-highlight xitCheckboxObsolete ctermfg=8
+highlight link xitCheckboxObsolete Normal
 highlight link xitCheckboxOngoing Keyword
+
+highlight link xitTag Constant
 
 " highlight link xitCheckboxOpenDescription Normal
 " highlight xitCheckboxCheckedDescription ctermfg=8
