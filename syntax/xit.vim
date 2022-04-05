@@ -45,7 +45,7 @@ syntax match xitNotCheckbox "\v^\[[x|\~|\@| ]\][^ ].*"
 " too many spaces inside of open checkbox
 syntax match xitNotCheckbox "\v^\[\s{2,}\].*"
 
-syntax match xitTag "\v#[a-zA-Z0-9]+"
+syntax match xitTag "\v#[a-zA-Z0-9\-]+"
 
 " -- Highlighting
 " For items that make sense to put to a existing
