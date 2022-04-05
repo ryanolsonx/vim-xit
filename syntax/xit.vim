@@ -39,11 +39,11 @@ syntax match xitCheckboxObsolete "\v^\[\~\]"
 " -- NOT Checkboxes
 
 " doesn't have " ", @, x, or ~ in checkbox
-syntax match xitNotCheckbox "\v\[[^x|\~|\@| ]\].*"
-" wrong spacing after checkbox
-syntax match xitNotCheckbox "\v\[[x|\~|\@| ]\][^ ].*"
+syntax match xitNotCheckbox "\v^\[[^x|\~|\@| ]\].*"
+" wrong spacing after checkbox.
+syntax match xitNotCheckbox "\v^\[[x|\~|\@| ]\][^ ].*"
 " too many spaces inside of open checkbox
-syntax match xitNotCheckbox "\v\[\s{2,}\].*"
+syntax match xitNotCheckbox "\v^\[\s{2,}\].*"
 
 " -- Highlighting
 " For items that make sense to put to a existing
