@@ -24,16 +24,17 @@ endif
 " -- Title
 syntax match xitTitle "\v^[a-zA-Z0-9]+.*$"
 
-" -- Checkboxes
-syntax match xitCheckboxOpen "\v\[ \]"
-syntax match xitCheckboxChecked "\v\[x\]"
-syntax match xitCheckboxOngoing "\v\[\@\]"
-syntax match xitCheckboxObsolete "\v\[\~\]"
-
 " -- Checkbox description
-syntax match xitCheckboxOpenDescription "\(\[x\] \)\@<=.*$"
-syntax match xitCheckboxCheckedDescription "\(\[x\] \)\@<=.*$"
-syntax match xitCheckboxObsoleteDescription "\(\[\~\] \)\@<=.*$"
+" syntax match xitCheckboxOpenDescription "\(\[x\] \)\@<=.*$"
+" syntax match xitCheckboxCheckedDescription "\(\[x\] \)\@<=.*$"
+" syntax match xitCheckboxCheckedDescription "\(\[x\] .*$\)\@<=^\s{4}.*$"
+" syntax match xitCheckboxObsoleteDescription "\(\[\~\] \)\@<=.*$"
+
+" -- Checkboxes
+syntax match xitCheckboxOpen "\v^\[ \]"
+syntax match xitCheckboxChecked "\v^\[x\]"
+syntax match xitCheckboxOngoing "\v^\[\@\]"
+syntax match xitCheckboxObsolete "\v^\[\~\]"
 
 " -- NOT Checkboxes
 
@@ -50,16 +51,16 @@ syntax match xitNotCheckbox "\v\[\s{2,}\].*"
 " For others, this will simply use colors defined
 " in your terminal (like priority will use BrightRed).
 
-highlight xitTitle cterm=underline ctermfg=15
+highlight xitTitle cterm=bold,underline
 
 highlight xitCheckboxOpen ctermfg=6
 highlight xitCheckboxChecked ctermfg=2
 highlight xitCheckboxObsolete ctermfg=8
 highlight link xitCheckboxOngoing Keyword
 
-highlight link xitCheckboxOpenDescription Normal
-highlight xitCheckboxCheckedDescription ctermfg=8
-highlight xitCheckboxObsoleteDescription ctermfg=8
+" highlight link xitCheckboxOpenDescription Normal
+" highlight xitCheckboxCheckedDescription ctermfg=8
+" highlight xitCheckboxObsoleteDescription ctermfg=8
 
 highlight link xitNotCheckbox Error
 
