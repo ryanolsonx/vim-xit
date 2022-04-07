@@ -5,7 +5,7 @@
 " Specification found at: https://xit.jotaen.net/
 "
 " Author:   Ryan Olson <ryolson@me.com>
-" Version:  0.1
+" Version:  0.2.0
 "
 " Overridding
 " ========================
@@ -21,51 +21,43 @@ if exists("b:current_syntax")
   finish
 endif
 
-" -- Title
-syntax match xitTitle "\v^[a-zA-Z0-9]+.*$"
+syn match xitTitle "\v^[^\[| ].*$"
 
-" -- Checkbox description
-" syntax match xitCheckboxOpenDescription "\(\[x\] \)\@<=.*$"
-" syntax match xitCheckboxCheckedDescription "\(\[x\] \)\@<=.*$"
-" syntax match xitCheckboxCheckedDescription "\(\[x\] .*$\)\@<=^\s{4}.*$"
-" syntax match xitCheckboxObsoleteDescription "\(\[\~\] \)\@<=.*$"
+syn match xitCheckboxOpen "\v^\[ \]" nextgroup=xitCheckboxOpenSpace
+syn match xitCheckboxOpenSpace " " nextgroup=xitCheckboxOpenPriority contained
+syn match xitCheckboxOpenPriority "\v[!|.]*" nextgroup=xitCheckboxOpenDesc contained
+syn region xitCheckboxOpenDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
 
-" -- Checkboxes
-syntax match xitCheckboxOpen "\v^\[ \]"
-syntax match xitCheckboxChecked "\v^\[x\]"
-syntax match xitCheckboxOngoing "\v^\[\@\]"
-syntax match xitCheckboxObsolete "\v^\[\~\]"
+syn match xitCheckboxChecked "\v^\[x\]" nextgroup=xitCheckboxCheckedSpace
+syn match xitCheckboxCheckedSpace " " nextgroup=xitCheckboxCheckedPriority contained
+syn match xitCheckboxCheckedPriority "\v[!|.]*" nextgroup=xitCheckboxCheckedDesc contained
+syn region xitCheckboxCheckedDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
 
-" -- NOT Checkboxes
+syn match xitCheckboxOngoing "\v^\[\@\]" nextgroup=xitCheckboxOngoingSpace
+syn match xitCheckboxOngoingSpace " " nextgroup=xitCheckboxOngoingPriority contained
+syn match xitCheckboxOngoingPriority "\v[!|.]*" nextgroup=xitCheckboxOngoingDesc contained
+syn region xitCheckboxOngoingDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
 
-" doesn't have " ", @, x, or ~ in checkbox
-syntax match xitNotCheckbox "\v^\[[^x|\~|\@| ]\].*"
-" wrong spacing after checkbox.
-syntax match xitNotCheckbox "\v^\[[x|\~|\@| ]\][^ ].*"
-" too many spaces inside of open checkbox
-syntax match xitNotCheckbox "\v^\[\s{2,}\].*"
+syn match xitCheckboxObsolete "\v^\[\~\]" nextgroup=xitCheckboxObsoleteSpace
+syn match xitCheckboxObsoleteSpace " " nextgroup=xitCheckboxObsoletePriority contained
+syn match xitCheckboxObsoletePriority "\v[!|.]*" nextgroup=xitCheckboxObsoleteDesc contained
+syn region xitCheckboxObsoleteDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
 
-syntax match xitTag "\v#[a-zA-Z0-9\-]+"
+syn match xitTag "\v#[a-zA-Z0-9_-]+" contained
 
-" -- Highlighting
-" For items that make sense to put to a existing
-" highlight group (i.e. Keyword), it'll use that.
-" For others, this will simply use colors defined
-" in your terminal (like priority will use BrightRed).
-
-highlight xitTitle cterm=bold,underline
-
-highlight xitCheckboxOpen ctermfg=6
-highlight xitCheckboxChecked ctermfg=2
-highlight link xitCheckboxObsolete Normal
-highlight link xitCheckboxOngoing Keyword
-
-highlight link xitTag Constant
-
-" highlight link xitCheckboxOpenDescription Normal
-" highlight xitCheckboxCheckedDescription ctermfg=8
-" highlight xitCheckboxObsoleteDescription ctermfg=8
-
-highlight link xitNotCheckbox Error
+hi def link xitTitle Title
+hi def link xitCheckboxOpen Identifier
+hi def link xitCheckboxOpenPriority String
+hi def link xitCheckboxOpenDesc Normal
+hi def link xitCheckboxChecked Type
+hi def link xitCheckboxCheckedPriority Comment
+hi def link xitCheckboxCheckedDesc Comment
+hi def link xitCheckboxOngoing Keyword
+hi def link xitCheckboxOngoingPriority String
+hi def link xitCheckboxOngoingDesc Normal
+hi def link xitCheckboxObsolete Comment
+hi def link xitCheckboxObsoletePriority Comment
+hi def link xitCheckboxObsoleteDesc Comment
+hi def link xitTag Statement
 
 let b:current_syntax = "xit"
