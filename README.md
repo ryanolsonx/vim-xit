@@ -32,19 +32,6 @@ Using [Vundle](https://github.com/VundleVim/Vundle.vim):
 Plugin 'ryanolsonx/vim-xit'
 ```
 
-## Supported highlighting
-
-- Title
-- Checkbox
-- Simple Tag (like #hello)
-- Priorities
-- Multi-line descriptions
-
-## TODO
-
-- Full tag support
-- Due Dates
-
 ## License
 
 MIT
