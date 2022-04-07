@@ -37,13 +37,13 @@ Plugin 'ryanolsonx/vim-xit'
 - Title
 - Checkbox
 - Simple Tag (like #hello)
+- Priorities
+- Multi-line descriptions
 
 ## TODO
 
-- Multi-line description
 - Full tag support
 - Due Dates
-- Priority
 
 ## License
 
