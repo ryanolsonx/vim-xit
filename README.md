@@ -2,6 +2,8 @@
 
 Syntax highlighting for [x]it! for Vim.
 
+![Screenshot](https://raw.githubusercontent.com/ryanolsonx/vim-xit/main/screenshot.png "Screenshot of Vim [x]it!")
+
 ## Install
 
 ### Vim Packages
