@@ -5,7 +5,7 @@
 " Specification found at: https://xit.jotaen.net/
 "
 " Author:   Ryan Olson <ryolson@me.com>
-" Version:  0.1
+" Version:  0.2
 "
 " Overridding
 " ========================
@@ -21,8 +21,16 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax match xitTitle "\v^[a-zA-Z0-9]+.*$"
+syn match xitTitle "\v^[^\[| ].*$"
+syn match xitCheckboxOpen "\v^\[ \]"
+syn match xitCheckboxChecked "\v^\[x\]"
+syn match xitCheckboxOngoing "\v^\[\@\]"
+syn match xitCheckboxObsolete "\v^\[\~\]"
 
 hi def link xitTitle Title
+hi def link xitCheckboxOpen Identifier
+hi def link xitCheckboxChecked Typedef
+hi def link xitCheckboxOngoing Keyword
+hi def link xitCheckboxObsolete Comment
 
 let b:current_syntax = "xit"
