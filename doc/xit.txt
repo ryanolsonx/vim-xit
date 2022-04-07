@@ -1,0 +1,12 @@
+*xit.txt*  'Syntax highlighting for [x]it! for Vim'
+
+Author: Ryan Olson <https://github.com/ryanolsonx>
+License: MIT
+
+INTRODUCTION                                    *xit*
+
+Syntax highlighting for [x]it! for Vim. 
+
+Useful links: https://xit.jotaen.net/
+
+vim:tw=78:ts=8:ft=help:norl:
