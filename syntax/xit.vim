@@ -26,11 +26,13 @@ syn match xitCheckboxOpen "\v^\[ \]"
 syn match xitCheckboxChecked "\v^\[x\]"
 syn match xitCheckboxOngoing "\v^\[\@\]"
 syn match xitCheckboxObsolete "\v^\[\~\]"
+syn match xitTag "\v#[a-zA-Z0-9_-]+"
 
 hi def link xitTitle Title
 hi def link xitCheckboxOpen Identifier
 hi def link xitCheckboxChecked Typedef
 hi def link xitCheckboxOngoing Keyword
 hi def link xitCheckboxObsolete Comment
+hi def link xitTag Statement
 
 let b:current_syntax = "xit"
