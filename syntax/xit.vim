@@ -26,24 +26,25 @@ syn match xitTitle "\v^[^\[| ].*$"
 syn match xitCheckboxOpen "\v^\[ \]" nextgroup=xitCheckboxOpenSpace
 syn match xitCheckboxOpenSpace " " nextgroup=xitCheckboxOpenPriority contained
 syn match xitCheckboxOpenPriority "\v[!|.]*" nextgroup=xitCheckboxOpenDesc contained
-syn region xitCheckboxOpenDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
+syn region xitCheckboxOpenDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 syn match xitCheckboxChecked "\v^\[x\]" nextgroup=xitCheckboxCheckedSpace
 syn match xitCheckboxCheckedSpace " " nextgroup=xitCheckboxCheckedPriority contained
 syn match xitCheckboxCheckedPriority "\v[!|.]*" nextgroup=xitCheckboxCheckedDesc contained
-syn region xitCheckboxCheckedDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
+syn region xitCheckboxCheckedDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 syn match xitCheckboxOngoing "\v^\[\@\]" nextgroup=xitCheckboxOngoingSpace
 syn match xitCheckboxOngoingSpace " " nextgroup=xitCheckboxOngoingPriority contained
 syn match xitCheckboxOngoingPriority "\v[!|.]*" nextgroup=xitCheckboxOngoingDesc contained
-syn region xitCheckboxOngoingDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
+syn region xitCheckboxOngoingDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 syn match xitCheckboxObsolete "\v^\[\~\]" nextgroup=xitCheckboxObsoleteSpace
 syn match xitCheckboxObsoleteSpace " " nextgroup=xitCheckboxObsoletePriority contained
 syn match xitCheckboxObsoletePriority "\v[!|.]*" nextgroup=xitCheckboxObsoleteDesc contained
-syn region xitCheckboxObsoleteDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag
+syn region xitCheckboxObsoleteDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 syn match xitTag "\v#[a-zA-Z0-9_-]+" contained
+syn match xitDueDate "\v-\> \d{4}([-/]Q\d|[-/]W\d+|-\d{2}-\d{2}|/\d{2}/\d{2}|-\d{2}|/\d{2})?" contained
 
 hi def link xitTitle Title
 hi def link xitCheckboxOpen Identifier
@@ -59,5 +60,6 @@ hi def link xitCheckboxObsolete Comment
 hi def link xitCheckboxObsoletePriority Comment
 hi def link xitCheckboxObsoleteDesc Comment
 hi def link xitTag Statement
+hi def link xitDueDate Special
 
 let b:current_syntax = "xit"
