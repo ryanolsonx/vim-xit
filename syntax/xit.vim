@@ -5,7 +5,7 @@
 " Specification found at: https://xit.jotaen.net/
 "
 " Author:   Ryan Olson <ryolson@me.com>
-" Version:  0.2.0
+" Version:  0.3.0
 "
 " Overridding
 " ========================
@@ -46,20 +46,20 @@ syn region xitCheckboxObsoleteDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 con
 syn match xitTag "\v#[a-zA-Z0-9_-]+" contained
 syn match xitDueDate "\v-\> \d{4}([-/]Q\d|[-/]W\d+|-\d{2}-\d{2}|/\d{2}/\d{2}|-\d{2}|/\d{2})?" contained
 
-hi def link xitTitle Title
+hi def xitTitle cterm=bold,underline
 hi def link xitCheckboxOpen Identifier
-hi def link xitCheckboxOpenPriority String
+hi def link xitCheckboxOpenPriority Type
 hi def link xitCheckboxOpenDesc Normal
-hi def link xitCheckboxChecked Type
+hi def link xitCheckboxChecked Boolean
 hi def link xitCheckboxCheckedPriority Comment
 hi def link xitCheckboxCheckedDesc Comment
-hi def link xitCheckboxOngoing Keyword
-hi def link xitCheckboxOngoingPriority String
+hi def link xitCheckboxOngoing Conditional
+hi def link xitCheckboxOngoingPriority Type
 hi def link xitCheckboxOngoingDesc Normal
 hi def link xitCheckboxObsolete Comment
 hi def link xitCheckboxObsoletePriority Comment
 hi def link xitCheckboxObsoleteDesc Comment
-hi def link xitTag Statement
-hi def link xitDueDate Special
+hi def link xitTag PreProc
+hi def link xitDueDate Constant
 
 let b:current_syntax = "xit"
