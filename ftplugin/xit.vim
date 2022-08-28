@@ -8,18 +8,18 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 function! s:toggle(ln, char)
-    let a = getline(a:ln)
+    let l:a = getline(a:ln)
     " check on 
-    let b = substitute(a, '\v^(\s*)\[ \]', '\1[' .a:char. ']', '') 
-    if a ==# b
+    let l:b = substitute(l:a, '\v^(\s*)\[ \]', '\1[' .a:char. ']', '') 
+    if l:a ==# l:b
       " check off
-      let b = substitute(a, '\v^(\s*)\[' .a:char. '\]', '\1[ ]', '') 
+      let l:b = substitute(l:a, '\v^(\s*)\[' .a:char. '\]', '\1[ ]', '') 
     endif
-    if a ==# b
-      let b = substitute(a, '\v^(\s*)', '\1[ ] ', '')
+    if l:a ==# l:b
+      let l:b = substitute(l:a, '\v^(\s*)', '\1[ ] ', '')
     endif
-    call setline(a:ln, b)
-    return len(b) - len(a)
+    call setline(a:ln, l:b)
+    return len(l:b) - len(l:a)
 endfunction
 
 function! xit#ToggleBox(char, visual)
