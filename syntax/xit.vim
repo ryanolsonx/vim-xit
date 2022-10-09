@@ -28,48 +28,36 @@ endif
 syn match xitTitle "\v^[^\[| ].*$"
 
 " Matches a checkbox like "[ ]"
-syn match xitCheckboxOpen "\v^\[ \]" nextgroup=xitCheckboxOpenSpace
+syn match xitCheckboxOpen "\v^\s*\[ \]" nextgroup=xitCheckboxOpenSpace
 syn match xitCheckboxOpenSpace " " nextgroup=xitCheckboxOpenPriority contained
 " Matches a priority. Spaces followed by periods followed by exclaimation followed by a space. If it doesn't
 " match, it continues on to the description for the checkbox.
 syn match xitCheckboxOpenPriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxOpenDesc contained
-" This matches a multiline open checkbox description. It starts right away with any char and ends
-" at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
-" by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxOpenDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxOpenDesc start="." end="$" contained contains=xitTag,xitDueDate
 
 " Matches a checkbox like "[x]"
-syn match xitCheckboxChecked "\v^\[x\]" nextgroup=xitCheckboxCheckedSpace
+syn match xitCheckboxChecked "\v^\s*\[x\]" nextgroup=xitCheckboxCheckedSpace
 syn match xitCheckboxCheckedSpace " " nextgroup=xitCheckboxCheckedPriority contained
 " Matches a priority. Spaces followed by periods followed by exclaimation followed by a space. If it doesn't
 " match, it continues on to the description for the checkbox.
 syn match xitCheckboxCheckedPriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxCheckedDesc contained
-" This matches a multiline checked checkbox description. It starts right away with any char and ends
-" at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
-" by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxCheckedDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxCheckedDesc start="." end="$" contained contains=xitTag,xitDueDate
 
 " Matches a checkbox like "[@]"
-syn match xitCheckboxOngoing "\v^\[\@\]" nextgroup=xitCheckboxOngoingSpace
+syn match xitCheckboxOngoing "\v^\s*\[\@\]" nextgroup=xitCheckboxOngoingSpace
 syn match xitCheckboxOngoingSpace " " nextgroup=xitCheckboxOngoingPriority contained
 " Matches a priority. Spaces followed by periods followed by exclaimation followed by a space. If it doesn't
 " match, it continues on to the description for the checkbox.
 syn match xitCheckboxOngoingPriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxOngoingDesc contained
-" This matches a multiline ongoing checkbox description. It starts right away with any char and ends
-" at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
-" by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxOngoingDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxOngoingDesc start="." end="$" contained contains=xitTag,xitDueDate
 
 " This matches a checkbox like "[~]"
-syn match xitCheckboxObsolete "\v^\[\~\]" nextgroup=xitCheckboxObsoleteSpace
+syn match xitCheckboxObsolete "\v^\s*\[\~\]" nextgroup=xitCheckboxObsoleteSpace
 syn match xitCheckboxObsoleteSpace " " nextgroup=xitCheckboxObsoletePriority contained
 " Matches a priority. Spaces followed by periods followed by exclaimation followed by a space. If it doesn't
 " match, it continues on to the description for the checkbox.
 syn match xitCheckboxObsoletePriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxObsoleteDesc contained
-" This matches a multiline obsolete checkbox description. It starts right away with any char and ends
-" at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
-" by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxObsoleteDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxObsoleteDesc start="." end="$" contained contains=xitTag,xitDueDate
 
 " Matches a tag with letters, numbers, _, or -
 syn match xitTag "\v#[a-zA-Z0-9_-]+" contained
