@@ -36,7 +36,7 @@ syn match xitCheckboxOpenPriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxOpenDe
 " This matches a multiline open checkbox description. It starts right away with any char and ends
 " at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
 " by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxOpenDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxOpenDesc start="." end=/\v(^[\[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 " Matches a checkbox like "[x]"
 syn match xitCheckboxChecked "\v^\[x\]" nextgroup=xitCheckboxCheckedSpace
@@ -47,7 +47,7 @@ syn match xitCheckboxCheckedPriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxChe
 " This matches a multiline checked checkbox description. It starts right away with any char and ends
 " at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
 " by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxCheckedDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxCheckedDesc start="." end=/\v(^[\[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 " Matches a checkbox like "[@]"
 syn match xitCheckboxOngoing "\v^\[\@\]" nextgroup=xitCheckboxOngoingSpace
@@ -58,7 +58,7 @@ syn match xitCheckboxOngoingPriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxOng
 " This matches a multiline ongoing checkbox description. It starts right away with any char and ends
 " at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
 " by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxOngoingDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxOngoingDesc start="." end=/\v(^[\[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 " This matches a checkbox like "[~]"
 syn match xitCheckboxObsolete "\v^\[\~\]" nextgroup=xitCheckboxObsoleteSpace
@@ -69,7 +69,7 @@ syn match xitCheckboxObsoletePriority "\v( *\.*!* ){,1}" nextgroup=xitCheckboxOb
 " This matches a multiline obsolete checkbox description. It starts right away with any char and ends
 " at the beginning of the next checkbox or next group title. /me=e-1 means match to the end offset
 " by one so that it doesn't include the first char of a title or the "[".
-syn region xitCheckboxObsoleteDesc start="." end=/\v(\[|^[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
+syn region xitCheckboxObsoleteDesc start="." end=/\v(^[\[a-zA-Z0-9])/me=e-1 contained contains=xitTag,xitDueDate
 
 " Matches a tag with letters, numbers, _, or -
 syn match xitTag "\v#[a-zA-Z0-9_-]+" contained
